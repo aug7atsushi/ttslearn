@@ -34,6 +34,14 @@ isort = "^5.13.2"
 jupyterlab-code-formatter = "^2.2.1"
 pytest = "^8.0.2"
 pre-commit = "^3.6.2"
+flake8-pyproject = "^1.2.3"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203,W503"
+
+[tool.black]
+line-length = 88
 
 [build-system]
 requires = ["poetry-core"]

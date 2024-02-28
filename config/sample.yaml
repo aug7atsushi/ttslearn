@@ -1,0 +1,31 @@
+data:
+  train:
+    utt_list: data/utt_lists/train.list
+    in_dir: data/preprocess/jsut_sr16000/norm/train/in_duration
+    out_dir: data/preprocess/jsut_sr16000/norm/train/out_duration
+  dev:
+    utt_list: data/utt_lists/dev.list
+    in_dir: data/preprocess/jsut_sr16000/norm/dev/in_duration
+    out_dir: data/preprocess/jsut_sr16000/norm/dev/out_duration
+train:
+  save_dir: tmp/
+  epochs: 1
+  batch_size: 8
+  num_workers: 1
+  pin_memory: True
+  use_cuda: False
+  overwrite: True
+  continue_from: False
+  optimizer:
+    name: adam
+    params:
+      lr: 0.001
+      betas: [0.9, 0.999]
+      weight_decay: 0.0
+  criterion: l2loss
+model:
+    in_dim: 325
+    hidden_dim: 512
+    out_dim: 1
+    num_layers: 2
+seed: 42
