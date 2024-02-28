@@ -1,10 +1,8 @@
 data:
   train:
-    utt_list: data/utt_lists/train.list
     in_dir: data/preprocess/jsut_sr16000/norm/train/in_duration
     out_dir: data/preprocess/jsut_sr16000/norm/train/out_duration
   dev:
-    utt_list: data/utt_lists/dev.list
     in_dir: data/preprocess/jsut_sr16000/norm/dev/in_duration
     out_dir: data/preprocess/jsut_sr16000/norm/dev/out_duration
 train:
@@ -24,8 +22,9 @@ train:
       weight_decay: 0.0
   criterion: l2loss
 model:
-    in_dim: 325
-    hidden_dim: 512
-    out_dim: 1
-    num_layers: 2
+  _target_: ttslearn.models.dnntts.SimpleFNN
+  in_dim: 325
+  hidden_dim: 64
+  out_dim: 1
+  num_layers: 2
 seed: 42

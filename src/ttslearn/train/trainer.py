@@ -73,7 +73,7 @@ class TrainerBase(ABCTrainer):
         else:
             if (self.save_dir / "best.pth").exists():
                 if self.overwrite:
-                    print("Overwrite models.")
+                    logging.info("Overwrite models.")
                 else:
                     raise ValueError(
                         "Model already exists. If continue, set overwrite."
