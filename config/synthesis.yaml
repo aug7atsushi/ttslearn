@@ -1,0 +1,26 @@
+device: cpu
+
+utt_list: data/utt_lists/eval.list
+in_dir: dataset/jsut_ver1.1/basic5000/lab
+out_dir: exp/synthesis_duration_rnn_acoustic_dnn
+
+# 生成する発話の数(指定がない場合、utt_list の発話をすべて処理する)
+num_eval_utts:
+
+sample_rate: 16000
+qst_path: data/utt_lists/qst1.hed
+post_filter: True
+
+duration:
+  checkpoint: /Users/atsushi/Documents/Workspace/Github/ttslearn/mlruns/0/c3aab4d87c22414bbc42d15023a11124/artifacts/model/
+  in_scaler_path: data/preprocess/jsut_sr16000/org/in_duration_scaler.joblib
+  out_scaler_path: data/preprocess/jsut_sr16000/org/out_duration_scaler.joblib
+  model_yaml: outputs/2024-02-29/11-09-42/.hydra/config.yaml
+
+acoustic:
+  checkpoint: /Users/atsushi/Documents/Workspace/Github/ttslearn/mlruns/0/246bc51f85ff4fb599d7f8ef3dc2803c/artifacts/model/
+  in_scaler_path: data/preprocess/jsut_sr16000/org/in_acoustic_scaler.joblib
+  out_scaler_path: data/preprocess/jsut_sr16000/org/out_acoustic_scaler.joblib
+  model_yaml: outputs/2024-02-29/15-17-49/.hydra/config.yaml
+
+seed: 42

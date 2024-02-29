@@ -1,0 +1,32 @@
+data:
+  train:
+    in_dir: data/preprocess/jsut_sr16000/norm/train/in_duration
+    out_dir: data/preprocess/jsut_sr16000/norm/train/out_duration
+  dev:
+    in_dir: data/preprocess/jsut_sr16000/norm/dev/in_duration
+    out_dir: data/preprocess/jsut_sr16000/norm/dev/out_duration
+train:
+  save_dir: exp/jsut_sr16000/duration_rnn
+  epochs: 30
+  batch_size: 32
+  num_workers: 1
+  pin_memory: True
+  use_cuda: False
+  overwrite: True
+  continue_from: False
+  optimizer:
+    name: adam
+    params:
+      lr: 0.001
+      betas: [0.9, 0.999]
+      weight_decay: 0.0
+  criterion: l2loss
+model:
+  _target_: ttslearn.models.dnntts.LSTMRNN
+  in_dim: 325
+  out_dim: 1
+  hidden_dim: 64
+  bidirectional: False
+  num_layers: 2
+  dropout: 0.5
+seed: 42

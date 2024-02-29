@@ -1,0 +1,35 @@
+data:
+  train:
+    in_dir: data/preprocess/jsut_sr16000/norm/train/in_acoustic
+    out_dir: data/preprocess/jsut_sr16000/norm/train/out_acoustic
+  dev:
+    in_dir: data/preprocess/jsut_sr16000/norm/dev/in_acoustic
+    out_dir: data/preprocess/jsut_sr16000/norm/dev/out_acoustic
+train:
+  save_dir: exp/jsut_sr16000/acoustic_dnn
+  epochs: 30
+  batch_size: 32
+  num_workers: 1
+  pin_memory: True
+  use_cuda: False
+  overwrite: True
+  continue_from: False
+  optimizer:
+    name: adam
+    params:
+      lr: 0.001
+      betas: [0.9, 0.999]
+      weight_decay: 0.0
+  criterion: l2loss
+model:
+  _target_: ttslearn.models.dnntts.SimpleFNN
+  in_dim: 329
+  out_dim: 127
+  hidden_dim: 256
+  num_layers: 2
+seed: 42
+
+# (mgc, lf0, vuv, bap)
+stream_sizes: [120, 3, 1, 3]
+has_dynamic_features: [true, true, false, true]
+num_windows: 3
