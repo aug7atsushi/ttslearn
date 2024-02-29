@@ -182,5 +182,6 @@ mlruns/
 data/
 dataset/
 tmp/
+exp/
 
 # End of https://www.toptal.com/developers/gitignore/api/python

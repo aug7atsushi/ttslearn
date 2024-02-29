@@ -10,7 +10,7 @@ from ttslearn.criterions.distance import L2Loss
 from ttslearn.data.collate_fns import collate_fn_dnntts
 from ttslearn.data.dataset import EvalDataLoader, TrainDataLoader, TTSDataset
 from ttslearn.train.optimizer import get_optimizer
-from ttslearn.train.trainer import TrainerBase
+from ttslearn.train.trainer import Trainer
 from ttslearn.utils.utils import init_seed
 
 
@@ -66,7 +66,7 @@ def main(cfg: DictConfig):
         else:
             raise ValueError(f"Not support criterion {cfg.train.criterion}")
 
-        trainer = TrainerBase(
+        trainer = Trainer(
             model=model,
             loader=loader,
             criterion=criterion,

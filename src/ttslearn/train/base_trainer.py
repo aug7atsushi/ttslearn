@@ -118,7 +118,7 @@ class TrainerBase(ABCTrainer):
                 in_feats = in_feats[indices].cuda()
                 out_feats = out_feats[indices].cuda()
 
-            pred_feats = self.model(in_feats)
+            pred_feats = self.model(in_feats, lengths)
 
             # ゼロパディングされた部分を損失の計算に含めないように、マスクを作成
             mask = make_non_pad_mask(lengths).unsqueeze(-1).to(in_feats.device)
@@ -160,7 +160,7 @@ class TrainerBase(ABCTrainer):
                     in_feats = in_feats[indices].cuda()
                     out_feats = out_feats[indices].cuda()
 
-                pred_feats = self.model(in_feats)
+                pred_feats = self.model(in_feats, lengths)
 
                 # ゼロパディングされた部分を損失の計算に含めないように、マスクを作成
                 mask = make_non_pad_mask(lengths).unsqueeze(-1).to(in_feats.device)

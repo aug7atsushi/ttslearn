@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+import mlflow
 from torch import nn
 
 
@@ -21,3 +22,7 @@ class BaseModel(ABC, nn.Module):
                 _num_parameters += p.numel()
 
         return _num_parameters
+
+    def build_model(self, model_path) -> None:
+        config = mlflow.pytorch.load_state_dict(model_path)
+        self.load_state_dict(config["state_dict"])

@@ -6,7 +6,7 @@ data:
     in_dir: data/preprocess/jsut_sr16000/norm/dev/in_duration
     out_dir: data/preprocess/jsut_sr16000/norm/dev/out_duration
 train:
-  save_dir: tmp/
+  save_dir: exp
   epochs: 1
   batch_size: 8
   num_workers: 1

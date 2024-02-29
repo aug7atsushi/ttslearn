@@ -16,7 +16,7 @@ class SimpleFNN(BaseModel):
         model.append(nn.Linear(hidden_dim, out_dim))
         self.model = nn.Sequential(*model)
 
-    def forward(self, x):
+    def forward(self, x, lens=None):
         return self.model(x)
 
 
